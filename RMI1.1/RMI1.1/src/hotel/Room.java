@@ -28,4 +28,6 @@ public class Room {
 	public void setBookings(List<BookingDetail> bookings) {
 		this.bookings = bookings;
 	}
+
+
 }

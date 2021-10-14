@@ -11,11 +11,11 @@ public class BookingServer implements Remote{
     public static void main(String[] args) throws RemoteException {
         System.setSecurityManager(null);
 
-        BookingManager bookM = new BookingManager();
+        IBookingManager bookM = new BookingManager();
 
-        BookingManager stub = (BookingManager) UnicastRemoteObject.exportObject((Remote) bookM, 0);
+        IBookingManager stub = (IBookingManager) UnicastRemoteObject.exportObject((Remote) bookM, 0);
         Registry registry = LocateRegistry.getRegistry();
-        registry.rebind("BookingServer", stub);
+        registry.rebind("BookingManager", stub);
 
     }
 }
