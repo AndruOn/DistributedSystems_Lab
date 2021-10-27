@@ -1,0 +1,8 @@
+/home/andruon/Desktop/DistributedSyst/ds-1-2-rest/src/main/java/be/kuleuven/foodrestservice/exceptions/MealNotFoundException.java
+/home/andruon/Desktop/DistributedSyst/ds-1-2-rest/src/main/java/be/kuleuven/foodrestservice/controllers/MealsRestController.java
+/home/andruon/Desktop/DistributedSyst/ds-1-2-rest/src/main/java/be/kuleuven/foodrestservice/controllers/MealsRestRpcStyleController.java
+/home/andruon/Desktop/DistributedSyst/ds-1-2-rest/src/main/java/be/kuleuven/foodrestservice/domain/MealsRepository.java
+/home/andruon/Desktop/DistributedSyst/ds-1-2-rest/src/main/java/be/kuleuven/foodrestservice/domain/Meal.java
+/home/andruon/Desktop/DistributedSyst/ds-1-2-rest/src/main/java/be/kuleuven/foodrestservice/domain/MealType.java
+/home/andruon/Desktop/DistributedSyst/ds-1-2-rest/src/main/java/be/kuleuven/foodrestservice/FoodRestServiceApplication.java
+/home/andruon/Desktop/DistributedSyst/ds-1-2-rest/src/main/java/be/kuleuven/foodrestservice/exceptions/MealNotFoundAdvice.java

@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+option java_multiple_files = true;
+option java_package = "org.example.AlmaOnline.server";
+option java_outer_classname = "AlmaOnlineProto";
+option objc_class_prefix = "AO";
+
+package almaonline;
+
+service AlmaOnline {
+  rpc getRestaurants(google.protobuf.Empty) returns (RestaurantsResponse);
+  rpc getMenu(RestaurantId) returns (MenuResponse);
+  rpc createDineInOrder(DineInOrderRequest) returns (google.protobuf.Empty);
+  rpc createDeliveryOrder(DeliveryOrderRequest) returns (google.protobuf.Empty);
+  rpc getOrder(GetOrderRequest) returns (GetOrderResponse);
+  //rpc getScript(google.protobuf.Empty) returns (AppScript);
+}
+
+//rpc getRestaurants(google.protobuf.Empty) returns (RestaurantsResponse);
+message RestaurantsResponse{
+  repeated RestaurantInfoResponse restaurantsInfos = 1;
+}
+message RestaurantInfoResponse{
+   string id = 1;
+   string name = 2;
+}
+//rpc getMenu(RestaurantId) returns (MenuResponse);
+message ItemResponse{
+  string name = 1;
+  double price = 2;
+}
+message MenuResponse{
+  repeated ItemResponse items = 1;
+}
+message RestaurantId {
+  string id = 1;
+}
+//rpc createDineInOrder(DineInOrderQuoteRequest) returns (google.protobuf.Empty);
+message DineInOrderRequest{
+  string restaurantId = 1;
+  string orderId = 2;
+  string customer = 3;
+  repeated string items = 4;
+  google.protobuf.Timestamp reservationDate = 5;
+}
+//rpc createDeliveryOrder(DeliveryOrderRequest) returns (google.protobuf.Empty);
+message DeliveryOrderRequest{
+  string restaurantId = 1;
+  string orderId = 2;
+  string customer = 3;
+  repeated string items = 4;
+  string deliveryAddress = 5;
+}
+//rpc getOrder(getOrderRequest) returns (BaseOrderInfoResponse);
+message GetOrderRequest{
+  string RestaurantId = 1;
+  string orderId = 2;
+}
+message GetOrderResponse{
+  oneof getOrderResponse{
+    DineInOrderResponse dineInOrderResponse = 1;
+    DeliveryOrderResponse deliveryOrderResponse = 2;
+  }
+}
+
+message DineInOrderResponse{
+  google.protobuf.Timestamp createDate = 1;
+  string customer = 2;
+  repeated ItemResponse items = 3;
+  google.protobuf.Timestamp reservationDate = 4;
+}
+
+message DeliveryOrderResponse{
+  google.protobuf.Timestamp createDate = 1;
+  string customer = 2;
+  repeated ItemResponse items = 3;
+  string deliveryAddress = 4;
+}
+
+
+
+

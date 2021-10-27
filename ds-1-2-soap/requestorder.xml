@@ -1,0 +1,19 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:gs="http://foodmenu.io/cs/webservice">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <gs:addOrderRequest>
+            <gs:order>
+                <gs:address>
+                    Leuven
+                </gs:address>
+                <gs:mealnames>
+                    Bitchies
+                </gs:mealnames>
+                <gs:mealnames>
+                    Fish
+                </gs:mealnames>
+            </gs:order>
+        </gs:addOrderRequest>
+    </soapenv:Body>
+</soapenv:Envelope>
