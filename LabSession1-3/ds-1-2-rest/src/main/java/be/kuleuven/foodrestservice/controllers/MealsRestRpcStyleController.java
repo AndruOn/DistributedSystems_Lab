@@ -2,6 +2,7 @@ package be.kuleuven.foodrestservice.controllers;
 
 import be.kuleuven.foodrestservice.domain.Meal;
 import be.kuleuven.foodrestservice.domain.MealsRepository;
+import be.kuleuven.foodrestservice.exceptions.FormatNotAcceptedException;
 import be.kuleuven.foodrestservice.exceptions.MealNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
@@ -48,7 +49,7 @@ public class MealsRestRpcStyleController {
     Meal addNewMeal(@RequestBody Meal meal) {
         //System.out.println(meal);
 
-        Meal addedMeal = mealsRepository.addNewMeal(meal).orElseThrow(() -> new NullPointerException());
+        Meal addedMeal = mealsRepository.addNewMeal(meal).orElseThrow(() -> new FormatNotAcceptedException());
         //InputStream inputStream = TypeReference.class.getResourceAsStream("/json/users.json");
 
         return addedMeal;
@@ -56,14 +57,14 @@ public class MealsRestRpcStyleController {
 
     @PutMapping("/restrpc/meals/{id}")
     Meal updateMeal(@PathVariable String id, @RequestBody Meal meal) {
-        meal = mealsRepository.updateMeal(id, meal).orElseThrow(() -> new NullPointerException());
+        meal = mealsRepository.updateMeal(id, meal).orElseThrow(() -> new MealNotFoundException(id));
 
         return meal;
     }
 
-    @PostMapping("/restrpc/meals/{id}")
+    @DeleteMapping("/restrpc/meals/{id}")
     Meal deleteMeal(@PathVariable String id) {
-        Meal deletedMeal = mealsRepository.deleteMeal(id).orElseThrow(() -> new NullPointerException());
+        Meal deletedMeal = mealsRepository.deleteMeal(id).orElseThrow(() -> new MealNotFoundException(id));
 
         return deletedMeal;
     }
