@@ -225,7 +225,11 @@ public class Model {
                 );
             }
         }
-
+        //publishMessage("booking",
+        //          quote.toSTring() or each ticket.toString()
+        //              );
+        //all or nothing semantics
+        //then move this to worker
         Booking newBooking = new Booking(UUID.randomUUID(),LocalDateTime.now(),tickets,customer);
         if (bookings.get(customer) == null) {
             bookings.put(customer, new ArrayList<>());
